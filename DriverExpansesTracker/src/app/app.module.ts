@@ -7,6 +7,8 @@ import { CarsComponent } from './cars/cars.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { NavComponent } from './nav/nav.component';
 import {FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import {FormsModule} from '@angular/forms';
     LoginComponent,
     CarsComponent,
     PaymentsComponent,
-    NavComponent
+    NavComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
