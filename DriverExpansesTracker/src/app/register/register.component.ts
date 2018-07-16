@@ -3,7 +3,6 @@ import { UserService } from '../services/user.service';
 import { IRegister } from '../models/User/register';
 
 @Component({
-  selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ILogin} from '../models/User/login';
 import {IRegister} from '../models/User/register';
 import { map } from 'rxjs/operators';
+import { IUser } from '../models/User/user';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class UserService {
 
   baseUrl = 'http://localhost:52968/api/users';
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
 
   }
 
@@ -23,9 +24,9 @@ export class UserService {
     });
   }
 
-  // getCurrentIdentity() {
-  //   return this.http.get(this.baseUrl + '/currentIdentity');
-  // }
+  getCurrentIdentity() {
+    return this.http.get<IUser>(this.baseUrl + '/currentIdentity');
+  }
 
   register(register: IRegister) {
     return this.http.post(this.baseUrl, register).subscribe((response) => {

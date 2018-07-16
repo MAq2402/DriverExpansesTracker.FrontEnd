@@ -7,8 +7,9 @@ import { CarsComponent } from './cars/cars.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { NavComponent } from './nav/nav.component';
 import {FormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
+import {RouterModule} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      [
+        {path: 'register', component: RegisterComponent},
+        {path: 'login', component: LoginComponent}
+      ]
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
