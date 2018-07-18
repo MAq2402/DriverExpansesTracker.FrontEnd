@@ -4,7 +4,9 @@ import { UserService } from '../services/user.service';
 import { IUser } from '../models/User/user';
 import { Router } from '@angular/router';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
   user: IUser;
   constructor(private userService: UserService, private router: Router) {

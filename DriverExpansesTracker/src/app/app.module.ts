@@ -3,22 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { CarsComponent } from './cars/cars.component';
-import { PaymentsComponent } from './payments/payments.component';
 import { NavComponent } from './nav/nav.component';
 import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import {RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CarsComponent,
-    PaymentsComponent,
     NavComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot(
       [
+        {path: '', component: HomeComponent, canActivate: [AuthGuard]},
         {path: 'register', component: RegisterComponent},
-        {path: 'login', component: LoginComponent}
+        {path: 'login', component: LoginComponent},
+        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
       ]
     )
   ],
