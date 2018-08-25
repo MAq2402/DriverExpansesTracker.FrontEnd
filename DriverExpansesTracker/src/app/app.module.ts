@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import {RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -23,6 +24,7 @@ import { AuthGuard } from './guards/auth.guard';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent, canActivate: [AuthGuard]},
