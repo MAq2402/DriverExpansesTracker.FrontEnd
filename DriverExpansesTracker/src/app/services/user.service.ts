@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ILogin} from '../models/User/login';
 import {IRegister} from '../models/User/register';
 import { map } from 'rxjs/operators';
 import { IUser } from '../models/User/user';
+import { IToken } from '../models/Auth/token';
 
 
 @Injectable({
@@ -18,14 +19,8 @@ export class UserService {
 
   }
 
-  login(login: ILogin) {
-    return this.http.post(this.baseUrl + '/login', login).subscribe((response) => {
-
-    });
-  }
-
-  getCurrentIdentity() {
-    return this.http.get<IUser>(this.baseUrl + '/currentIdentity');
+  getCurrentIdentity(token: IToken) {
+    return this.http.post<IUser>(this.baseUrl + '/currentIdentity', token );
   }
 
   register(register: IRegister) {

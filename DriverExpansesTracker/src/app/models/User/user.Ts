@@ -8,11 +8,11 @@
 // public decimal Received { get; set; }
 export interface IUser {
   id: string;
-  firsName: string;
+  firstName: string;
   lastName: string;
   userName: string;
   toPay: number;
-  oReceive: number;
+  toReceive: number;
   payed: number;
   received: number;
 }
