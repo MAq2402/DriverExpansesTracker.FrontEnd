@@ -1,0 +1,69 @@
+<form>
+  <div class="form-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Stwórz podróż</div>
+      <div class="panel-body">
+
+        <label for="car">Wybierz samochód</label>
+        <select id="car" class="form-control">...</select>
+
+        <div id="journey">
+          <div class="row">
+
+            <div class="col-sm-6">
+              <label for="start">Początek</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="start" aria-describedby="basic-addon3">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="destination">Cel</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="destination" aria-describedby="basic-addon3">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="length">Długość trasy w kilometrach</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="length" aria-describedby="basic-addon3">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="price">Cena za litr</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="price" aria-describedby="basic-addon3">
+              </div>
+            </div>
+          </div>
+
+          <div id="passengerRoutes">
+            <label for="passenger1">Pasażer</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="passenger1" aria-describedby="basic-addon3">
+            </div>
+            <label for="passangerStart1">Początek</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="passangerStart1" aria-describedby="basic-addon3">
+            </div>
+            <label for="passengerRouteLength1">Przejechana odległość</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="passengerRouteLength1" aria-describedby="basic-addon3">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+          <div class="form-group">
+                <button type="submit" class="btn btn-primary">Stwórz</button>
+            </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
     userName: '',
     password: ''
   };
+
+  message: string;
   ngOnInit() {
+    this.userService.currentMessage.subscribe(res => this.message = res);
   }
   loginUser() {
     this.authService.login(this.credentials).subscribe(

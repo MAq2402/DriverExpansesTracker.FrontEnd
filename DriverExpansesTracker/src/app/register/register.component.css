@@ -1,0 +1,30 @@
+
+.panel-heading{
+  text-align: left;
+  font-weight: bold;
+}
+#firstName-input{
+  margin-top:15px;
+}
+#lastName-input{
+  margin-top: 15px;
+}
+#userName-input{
+  margin-top:15px;
+}
+#password-input{
+  margin-top: 15px;
+}
+#confirmPassword-input{
+  margin-top:15px;
+}
+#login-btn{
+  margin-top: 40px;
+  text-align: left;
+}
+hr{
+  border-top-color: gray;
+}
+.panel{
+  margin-top:60px;
+}

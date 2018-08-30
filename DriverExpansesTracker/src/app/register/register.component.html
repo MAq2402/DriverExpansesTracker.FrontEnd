@@ -1,51 +1,61 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <div class="panel panel-default">
+
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-info">
+
         <div class="panel-heading">
-          <h3 class="panel-title">Zarejestruj się w DriverExpanseTracker</h3>
+          <span>Zarejestruj się</span>
         </div>
+
         <div class="panel-body">
-          <form>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="input-group ">
-                  <input type="text" class="form-control col-sm-3 " placeholder="Imię" aria-describedby="basic-addon1">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="input-group">
-                  <input type="text" class="form-control " placeholder="Nazwisko" aria-describedby="basic-addon1">
-                </div>
-              </div>
+          <form (ngSubmit)='registerUser()'>
+            <div id="firstName-input" class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </span>
+              <input name="firstName" [(ngModel)]='registerModel.firstName' type="text" class="form-control" placeholder="Imię" aria-describedby="basic-addon1">
+            </div>
+            <div id="lastName-input" class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </span>
+              <input name="lastName" [(ngModel)]='registerModel.lastName' type="text" class="form-control" placeholder="Nazwisko" aria-describedby="basic-addon1">
+            </div>
+            <div id="userName-input" class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </span>
+              <input name="userName" [(ngModel)]='registerModel.userName' type="text" class="form-control" placeholder="Nazwa użytkownika"
+                aria-describedby="basic-addon1">
             </div>
 
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Nazwa użytkownika" aria-describedby="basic-addon1">
-                </div>
-              </div>
+            <div id="password-input" class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+              </span>
+              <input name="password" [(ngModel)]='registerModel.password' type="password" class="form-control" placeholder="Hasło" aria-describedby="basic-addon1">
+            </div>
+            <div id="confirmPassword-input" class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+              </span>
+              <input name="confirmPassword" [(ngModel)]='registerModel.confirmPassword' type="password" class="form-control" placeholder=" Potwierdź hasło"
+                aria-describedby="basic-addon1">
             </div>
 
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="input-group">
-
-                  <input type="text" class="form-control" placeholder="Hasło" aria-describedby="basic-addon1">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Potwierdź hasło" aria-describedby="basic-addon1">
-                </div>
-              </div>
-            </div>
-            <div>
-              <button class="btn btn-info">Zarejestruj się</button>
+            <div id="login-btn">
+              <button type="submit" class="btn btn-success">Zarejestruj się</button>
             </div>
           </form>
+          <hr />
+
+          <p>Masz już konto?
+            <a [routerLink]="['/login']">Zaloguj się</a>
+          </p>
 
         </div>
       </div>
