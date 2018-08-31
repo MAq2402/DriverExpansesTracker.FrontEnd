@@ -41,28 +41,43 @@
             </div>
           </div>
 
+          <hr/>
           <div id="passengerRoutes">
-            <label for="passenger1">Pasażer</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="passenger1" aria-describedby="basic-addon3">
+            <div class="passenger row">
+              <div class="col-sm-4">
+                <label>Pasażer</label>
+                <div class="input-group">
+                  <input type="text" class="form-control"  aria-describedby="basic-addon3">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <label>Początek</label>
+                <div class="input-group">
+                  <input type="text" class="form-control"  aria-describedby="basic-addon3">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <label>Przejechana odległość</label>
+                <div class="input-group">
+                  <input type="number" class="form-control"  aria-describedby="basic-addon3">
+                </div>
+              </div>
             </div>
-            <label for="passangerStart1">Początek</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="passangerStart1" aria-describedby="basic-addon3">
-            </div>
-            <label for="passengerRouteLength1">Przejechana odległość</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="passengerRouteLength1" aria-describedby="basic-addon3">
+          </div>
+            <div id="newPassenger">
+              <button (click)= "addPassengerButtonOnClick()" id = "addPassengerButton" type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
             </div>
 
-          </div>
+
         </div>
 
       </div>
       <div class="panel-footer">
-          <div class="form-group">
-                <button type="submit" class="btn btn-primary">Stwórz</button>
-            </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Stwórz</button>
+        </div>
       </div>
     </div>
   </div>
