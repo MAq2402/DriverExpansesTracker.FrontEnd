@@ -12,6 +12,7 @@ import {HttpModule} from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateJourneyComponent } from './create-journey/create-journey.component';
+import { CarComponent } from './car/car.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateJourneyComponent } from './create-journey/create-journey.componen
     NavComponent,
     RegisterComponent,
     HomeComponent,
-    CreateJourneyComponent
+    CreateJourneyComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { CreateJourneyComponent } from './create-journey/create-journey.componen
         {path: '', component: HomeComponent, canActivate: [AuthGuard]},
         {path: 'register', component: RegisterComponent},
         {path: 'login', component: LoginComponent},
-        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
+        {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+        {path: 'cars', component: CarComponent, canActivate: [AuthGuard]}
       ]
     )
   ],
