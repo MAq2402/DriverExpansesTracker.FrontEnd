@@ -45,4 +45,8 @@ export class UserService {
     };
   }
 
+  logout() {
+    localStorage.removeItem('auth_token');
+  }
+
 }

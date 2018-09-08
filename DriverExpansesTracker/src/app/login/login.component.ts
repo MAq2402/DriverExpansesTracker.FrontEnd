@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   message: string;
   ngOnInit() {
+    this.navigateToHomeIfUserIsLoggedIn();
     this.userService.currentMessage.subscribe(res => this.message = res);
   }
   loginUser() {
@@ -28,6 +29,12 @@ export class LoginComponent implements OnInit {
            this.router.navigate(['/home']);
         }
     });
+  }
+
+  navigateToHomeIfUserIsLoggedIn() {
+    if (localStorage.getItem('auth_token')) {
+      this.router.navigate(['/home']);
+    }
   }
 
 }

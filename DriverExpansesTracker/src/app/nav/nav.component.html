@@ -11,13 +11,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a [routerLink]="['home']" class="navbar-brand" href="#">DriverExpansesTracker</a>
+      <a [routerLink]="['/home']" class="navbar-brand" href="#">DriverExpansesTracker</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a [routerLink]="['cars']" href="#">Samochody</a></li>
+        <li><a [routerLink]="['/cars']" href="#">Samochody</a></li>
         <li><a href="#"></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -40,6 +40,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">{{user.userName}}</a></li>
+        <li><a href="#" [routerLink]="['login']" (click)= "logout()">Wyloguj się</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'DriverExpanseTracker';
+
+  constructor(private authService: AuthService) {
+
+  }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('auth_token');
+  }
 }
+
+
 
 

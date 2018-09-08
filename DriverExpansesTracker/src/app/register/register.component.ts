@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.navigateToHomeIfUserIsLoggedIn();
     this.userService.currentMessage.subscribe(res => this.message = res);
   }
   registerUser() {
@@ -40,6 +41,12 @@ export class RegisterComponent implements OnInit {
       this.userService.changeMessage('Twoje konto zostało utworzone pomyślnie');
     } else {
       this.userService.changeMessage('Nie udało się utworzyć konta spróbuj jeszcze raz');
+    }
+  }
+
+  navigateToHomeIfUserIsLoggedIn() {
+    if (localStorage.getItem('auth_token')) {
+      this.router.navigate(['/home']);
     }
   }
 }
