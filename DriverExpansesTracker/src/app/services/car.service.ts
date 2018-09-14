@@ -16,23 +16,32 @@ export class CarService {
 
   baseUrl = 'http://localhost:52968/api/users/';
   user: IUser;
-  car: ICar;
+  // car: ICar;
   token: IToken;
+  // tokenValue: string;
 
   constructor(private http: HttpClient, private userService: UserService) {
-
+    this.initVariables();
   }
 
-  createCar() {
+  initVariables() {
+    this.userService.getCurrentIdentity()
+    .subscribe(res => {
+      this.user = res.body;
+    });
+    // TODO: wrzucić tu też tokena?
+  }
+
+  createCar(car: ICar) {
+    this.token = { value: localStorage.getItem('auth_token') };
+
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token.value}` })
       };
-      this.token.value = localStorage.getItem('auth_token');
-    httpOptions.headers.append('Authorization', `Bearer ${this.token.value}`);
+    // httpOptions.headers.append('Authorization', `Bearer ${this.token.value}`);
 
-    this.userService.getCurrentIdentity(this.token).subscribe(res => this.user = res);
-
-    return this.http.post<ICar>(this.baseUrl + this.user.id + '/cars', this.car, httpOptions);
+    // return this.http.post<ICar>(this.baseUrl + this.user.id + '/cars', car, httpOptions);
+    return this.http.post(this.baseUrl + this.user.id + '/cars', car, httpOptions);
   }
 
 }

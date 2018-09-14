@@ -1,5 +1,4 @@
-
-<form>
+<form (ngSubmit)='createCar()'>
   <div class="form-group">
     <div class="panel panel-primary">
       <div class="panel-heading">Dodaj samochód</div>
@@ -10,20 +9,21 @@
             <div class="col-sm-4">
               <label for="name">Nazwa</label>
               <div class="input-group">
-                <input [(ngModel)] = "car.name" type="text" class="form-control" id="name" aria-describedby="basic-addon3">
+                <input name="name" [(ngModel)]="car.name" type="text" class="form-control" id="name" aria-describedby="basic-addon3">
               </div>
             </div>
 
             <div class="col-sm-4">
               <label for="fuelConsumption">Zużycie paliwa na 100km w litach</label>
               <div class="input-group">
-                <input [(ngModel)] = "car.fuelConsumption100km" type="number" class="form-control" id="fuelConsumption" aria-describedby="basic-addon3">
+                <input name="fuelConsumption100km" [(ngModel)]="car.fuelConsumption100km" type="number" class="form-control" id="fuelConsumption"
+                  aria-describedby="basic-addon3">
               </div>
             </div>
 
             <div class="col-sm-4">
               <label for="fuelType">Wybierz rodzaj paliwa</label>
-              <select [(ngModel)] = "fuelType" id="fuelType" class="form-control">
+              <select name="fuelType" [(ngModel)]="fuelType" id="fuelType" class="form-control">
                 <option>Benzyna</option>
                 <option>Diesiel</option>
                 <option>LPG</option>
@@ -34,7 +34,6 @@
 
           </div>
         </div>
-
       </div>
       <div class="panel-footer">
         <div class="form-group">
@@ -44,4 +43,3 @@
     </div>
   </div>
 </form>
-

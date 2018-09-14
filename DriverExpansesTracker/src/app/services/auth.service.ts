@@ -21,7 +21,6 @@ export class AuthService {
 
   login(credentials: ILogin): Observable<boolean> {
     const headers = new Headers();
-
     return this.http
       .post(
       this.baseUrl + '/login',
