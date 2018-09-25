@@ -1,4 +1,4 @@
-enum FuelType {
+export enum FuelType {
   benzine,
   diesel,
   lpg,

@@ -20,29 +20,11 @@ export class UserService {
   currentMessage = this.messageBehaviorSubject.asObservable();
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-
-//  getCurrentIdentity(token: IToken) {
-//    return this.http.post<IUser>(this.baseUrl + '/currentIdentity', token );
-//  }
-//  getCurrentIdentity(token: IToken): Observable<IUser> {
-//    const httpOptions = {
-//      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-//     };
-//    httpOptions.headers.append('Authorization', `Bearer ${token.value}`);
-//  return this.http.post<IUser>(this.baseUrl + '/currentIdentity', token, httpOptions );
-// }
   getCurrentIdentity(): Observable<HttpResponse<IUser>> {
+    // ta metoda musi mieć headery bo jest używana w authService.login
     const token: IToken = { value: localStorage.getItem('auth_token') };
-    console.log('token from getCurrentIdentity => ' + token.value);
-    // const httpOptions = {
-    //  headers: new HttpHeaders({
-    //    'Content-Type': 'application/json',
-    //    'Authorization': `Bearer ${token.value}`,
-    //  })};
-    // TO DO: Ogarnąć funkcję i ptzyjąć jakiś template czy ma być Observable<HttpResponse<Object>> Czy bez httpResponse
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token.value}`
@@ -70,6 +52,7 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('currentUser');
   }
 
 }

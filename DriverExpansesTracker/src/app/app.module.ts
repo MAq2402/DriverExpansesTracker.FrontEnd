@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -7,12 +8,16 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateJourneyComponent } from './create-journey/create-journey.component';
 import { CarComponent } from './car/car.component';
+import { AlertComponent } from './alert/alert.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -22,13 +27,15 @@ import { CarComponent } from './car/car.component';
     RegisterComponent,
     HomeComponent,
     CreateJourneyComponent,
-    CarComponent
+    CarComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     HttpModule,
+    NgbAlertModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -39,7 +46,10 @@ import { CarComponent } from './car/car.component';
       ]
     )
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

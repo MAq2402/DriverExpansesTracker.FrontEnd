@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ILogin} from '../models/User/login';
+import { ILogin } from '../models/User/login';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { AlertService } from '../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private alertService: AlertService,
+    private router: Router) { }
   credentials: ILogin = {
     userName: '',
     password: ''
@@ -23,12 +29,11 @@ export class LoginComponent implements OnInit {
     this.userService.currentMessage.subscribe(res => this.message = res);
   }
   loginUser() {
-    this.authService.login(this.credentials).subscribe(
-      result => {
-        if (result) {
-           this.router.navigate(['/home']);
-        }
-    });
+    this.authService.login(this.credentials)
+      .subscribe(
+        data => { this.router.navigate(['/home']); },
+        error => { this.alertService.error('Niepoprawne dane logowania.');
+      });
   }
 
   navigateToHomeIfUserIsLoggedIn() {

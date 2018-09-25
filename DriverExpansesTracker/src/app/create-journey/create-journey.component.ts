@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-create-journey',
@@ -8,7 +9,7 @@ import * as $ from 'jquery';
 })
 export class CreateJourneyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertService: AlertService) { }
   private passengerCount = 1;
   passengerHtml;
   ngOnInit() {
@@ -17,8 +18,12 @@ export class CreateJourneyComponent implements OnInit {
 
   addPassengerButtonOnClick() {
     this.passengerCount++;
-     const newPassengerDiv = this.passengerHtml.clone();
+    const newPassengerDiv = this.passengerHtml.clone();
     const passengerRoutesDiv = $('#passengerRoutes');
     newPassengerDiv.appendTo(passengerRoutesDiv);
+  }
+
+  send() {
+    this.alertService.showAlert('DZIAŁA -- to jest jakiś testowy tekst', 'success');
   }
 }
