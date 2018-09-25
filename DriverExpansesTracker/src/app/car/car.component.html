@@ -23,13 +23,8 @@
 
             <div class="col-sm-4">
               <label for="fuelType">Wybierz rodzaj paliwa</label>
-              <select name="fuelType" [(ngModel)]="fuelType" id="fuelType" class="form-control">
-                <option *ngFor="let fuelType of fuelTypes" [value]="fuelType.key" [label]=fuelType.value></option>
-                <!--<option>Benzyna</option>
-                <option>Diesiel</option>
-                <option>LPG</option>
-                <option>Hybryda</option>
-                <option>Elektryczny</option>-->
+              <select name="fuelType" [(ngModel)]="car.fuelType" id="fuelType" class="form-control">
+                <option *ngFor="let fT of fuelTypes" [value]="fT.value" > {{fT.label}} </option>
               </select>
             </div>
 

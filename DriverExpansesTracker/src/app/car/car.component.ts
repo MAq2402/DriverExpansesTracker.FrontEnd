@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ICar } from '../models/Car/car';
 import { CarService } from '../services/car.service';
-import { UserService } from '../services/user.service';
-import { IUser } from '../models/User/user';
-import { AlertComponent } from '../alert/alert.component';
-import { FuelType } from '../models/Enums/fuel.type';
+import { FuelType, getFuelTypeArray } from '../models/Enums/fuel.type';
 
 @Component({
   selector: 'app-car',
@@ -19,27 +17,23 @@ export class CarComponent implements OnInit {
     fuelType: FuelType.benzine
   };
 
-  private fuelTypeArray: Array<{value: number, label: string}>;
+  fuelTypes: Array<{value: number, label: string}> = getFuelTypeArray();
 
-  private fuelTypesNames = new Map<number, string>([
-    [FuelType.benzine, 'Benzyna'],
-    [FuelType.diesel, 'Diesel'],
-    [FuelType.electric, 'Elektryczny'],
-    [FuelType.hybrid, 'Hybryda'],
-    [FuelType.lpg, 'LPG']
-  ]);
-
-  constructor(private carService: CarService) { }
+  constructor(
+    private carService: CarService,
+    private location: Location
+    ) { }
 
   ngOnInit() {}
 
   createCar() {
-    console.log('dodawanie samochodu');
-    // this.showAlert();
     this.carService.createCar(this.car)
-      .subscribe(() => console.log('serwis zadzialal'));
-    // this.carService.createCar(this.car)
-    //  .subscribe(() => this.showAlert());
+      .subscribe(
+        success => this.location.back(),
+        error => null
+      );
+      // ^ żeby to zadziałało chyba tzreba zrobić jakieś mapowanie response w carService
+      // https://stackoverflow.com/questions/42202997/calling-success-error-callbacks-using-subscribe-in-angular2
   }
 
 }
