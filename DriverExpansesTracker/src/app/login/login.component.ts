@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from '../services/alert.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private alertService: AlertService,
+    private spinnerService: NgxSpinnerService,
     private router: Router) { }
   credentials: ILogin = {
     userName: '',
@@ -31,9 +33,14 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.authService.login(this.credentials)
       .subscribe(
-        data => { this.router.navigate(['/home']); },
-        error => { this.alertService.error('Niepoprawne dane logowania.');
-      });
+        data => {
+          this.spinnerService.show();
+          this.router.navigate(['/home']);
+        },
+        error => {
+          this.alertService.error('Niepoprawne dane logowania.');
+        }
+      );
   }
 
   navigateToHomeIfUserIsLoggedIn() {

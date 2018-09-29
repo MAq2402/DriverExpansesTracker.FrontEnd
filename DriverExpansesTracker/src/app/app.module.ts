@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -36,6 +37,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     HttpClientModule,
     HttpModule,
     NgbAlertModule,
+    NgxSpinnerModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent, canActivate: [AuthGuard]},

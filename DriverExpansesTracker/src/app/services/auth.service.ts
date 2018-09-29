@@ -4,8 +4,9 @@ import {Observable, BehaviorSubject} from 'rxjs';
 import {ILogin} from '../models/User/login';
 import {IRegister} from '../models/User/register';
 import { IUser } from '../models/User/user';
-import { map } from 'rxjs/internal/operators/map';
+import { tap, map } from 'rxjs/internal/operators';
 import { UserService } from '../services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Injectable({
@@ -17,7 +18,8 @@ export class AuthService {
   private _authNavStatusSource = new BehaviorSubject<boolean>(false);
 
   constructor(private http: Http,
-              private userService: UserService) {
+              private userService: UserService,
+              private spinnerService: NgxSpinnerService) {
 
   }
 
@@ -28,13 +30,16 @@ export class AuthService {
       credentials, {headers}
       )
       .pipe(map(res => res.json()))
-      .pipe(map(res => {
+      .pipe(
+        map(res => {
         localStorage.setItem('auth_token', res.auth_token);
         this.userService.getCurrentIdentity()
+          .pipe(tap(_ => this.spinnerService.hide()))
           .subscribe(user => localStorage.setItem('currentUser', JSON.stringify(user.body)));
         this._authNavStatusSource.next(true);
         return true;
-      }));
+        }),
+      );
   }
   isLoggedIn() {
     return !!localStorage.getItem('auth_token');

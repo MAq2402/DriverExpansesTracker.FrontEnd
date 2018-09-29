@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 import { ICar } from '../models/Car/car';
 import { IUser } from '../models/User/user';
@@ -24,7 +24,7 @@ export class CarService {
 
     createCar(car: ICar) {
     // JWT token provided by jwt.interceptor
-    return this.http.post(this.baseUrl + this.user.id + '/cars', car)
+    return this.http.post<ICar>(this.baseUrl + this.user.id + '/cars', car)
       .pipe(
         tap(_ => this.alertService.success(`Dodano samochod: ${car.name}`)),
         catchError(this.errorService.handleError<any>('Operacja dodawania samochodu'))

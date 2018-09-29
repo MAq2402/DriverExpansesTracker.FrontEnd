@@ -28,12 +28,8 @@ export class CarComponent implements OnInit {
 
   createCar() {
     this.carService.createCar(this.car)
-      .subscribe(
-        success => this.location.back(),
-        error => null
-      );
-      // ^ żeby to zadziałało chyba tzreba zrobić jakieś mapowanie response w carService
-      // https://stackoverflow.com/questions/42202997/calling-success-error-callbacks-using-subscribe-in-angular2
+      .subscribe((data: ICar) => {
+          if (data) /* success path */ {this.location.back(); }});
   }
 
 }
