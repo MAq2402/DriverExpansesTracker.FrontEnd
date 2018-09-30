@@ -16,8 +16,7 @@ export class CarComponent implements OnInit {
     fuelConsumption100km: 0,
     fuelType: FuelType.benzine
   };
-
-  fuelTypes: Array<{value: number, label: string}> = getFuelTypeArray();
+  fuelTypes = getFuelTypeArray();
 
   constructor(
     private carService: CarService,

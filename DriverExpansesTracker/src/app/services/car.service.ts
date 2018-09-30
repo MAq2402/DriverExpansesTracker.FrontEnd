@@ -1,6 +1,6 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { ICar } from '../models/Car/car';
 import { IUser } from '../models/User/user';
@@ -29,7 +29,14 @@ export class CarService {
         tap(_ => this.alertService.success(`Dodano samochod: ${car.name}`)),
         catchError(this.errorService.handleError<any>('Operacja dodawania samochodu'))
       );
-  }
+    }
+
+    getAllCars() {
+      return this.http.get<ICar[]>(this.baseUrl + this.user.id + '/cars')
+        .pipe(
+          catchError(this.errorService.handleError<any>('Operacja pobierania samochodow użytkownika ' + this.user.userName))
+        );
+    }
 
 }
 

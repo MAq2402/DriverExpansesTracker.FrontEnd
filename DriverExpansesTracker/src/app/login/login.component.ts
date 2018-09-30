@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.credentials)
       .subscribe(
         data => {
-          this.spinnerService.show();
+          this.spinnerService.show(); // hide in authService.login
           this.router.navigate(['/home']);
         },
         error => {

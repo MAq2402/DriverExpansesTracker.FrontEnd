@@ -18,6 +18,8 @@ import { CarComponent } from './car/car.component';
 import { AlertComponent } from './alert/alert.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { CarDashboardComponent } from './car-dashboard/car-dashboard.component';
+import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     HomeComponent,
     CreateJourneyComponent,
     CarComponent,
-    AlertComponent
+    AlertComponent,
+    CarDashboardComponent,
+    MapFuelTypePipe
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
         {path: 'register', component: RegisterComponent},
         {path: 'login', component: LoginComponent},
         {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-        {path: 'cars', component: CarComponent, canActivate: [AuthGuard]}
+        {path: 'cars', component: CarDashboardComponent, canActivate: [AuthGuard]},
+        {path: 'caradd', component: CarComponent, canActivate: [AuthGuard]}
       ]
     )
   ],
