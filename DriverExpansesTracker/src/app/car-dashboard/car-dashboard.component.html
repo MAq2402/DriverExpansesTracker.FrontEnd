@@ -1,33 +1,42 @@
-<form>
-  <div class="form-group">
-    <div class="panel panel-primary">
-      <div class="panel-heading">Moje samochody</div>
-      <div class="panel-body">
+<div class="col-sm-12">
+  <form>
+    <div class="form-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Moje samochody</div>
+        <div class="panel-body">
 
           <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Nazwa</th>
-                  <th>Paliwo</th>
-                  <th>Spalanie</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let car of cars">
-                  <td>{{car.name}}</td>
-                  <td>{{mapToNumber(car.fuelType) | mapFuelType}}</td>
-                  <td>{{car.fuelConsumption100km}}l / 100km</td>
-                </tr>
-              </tbody>
-            </table>
+            <thead>
+              <tr>
+                <th>Nazwa</th>
+                <th>Paliwo</th>
+                <th>Spalanie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let car of getSlicedCars()">
+                <td>{{car.name}}</td>
+                <td>{{getFuelTypeNumber(car.fuelType) | mapFuelType}}</td>
+                <td style="text-align:end;">{{car.fuelConsumption100km}}l / 100km</td>
+              </tr>
+            </tbody>
+          </table>
 
-      </div>
-      <div class="panel-footer">
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Stwórz</button>
-          <button (click)="send()" class="btn btn-primary">Alert</button>
+        </div>
+        <div class="panel-footer">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-10">
+                <button (click)="openModalAddCar()" class="btn btn-primary">Dodaj</button>
+              </div>
+              <div *ngIf="carsCount > stepIndex" class="col-sm-2 justify-content-end">
+                <button type="button" class="btn btn-secondary nav-btn" (click)="prev()" [disabled]="prevDisabled"><</button>
+                <button type="button" class="btn btn-secondary nav-btn" (click)="next()" [disabled]="nextDisabled">></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

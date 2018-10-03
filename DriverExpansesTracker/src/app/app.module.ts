@@ -57,6 +57,9 @@ import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
+  entryComponents: [
+    CarComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

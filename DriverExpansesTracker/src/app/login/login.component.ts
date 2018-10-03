@@ -31,13 +31,14 @@ export class LoginComponent implements OnInit {
     this.userService.currentMessage.subscribe(res => this.message = res);
   }
   loginUser() {
+    this.spinnerService.show(); // hide in authService.login
     this.authService.login(this.credentials)
       .subscribe(
         data => {
-          this.spinnerService.show(); // hide in authService.login
           this.router.navigate(['/home']);
         },
         error => {
+          this.spinnerService.hide();
           this.alertService.error('Niepoprawne dane logowania.');
         }
       );

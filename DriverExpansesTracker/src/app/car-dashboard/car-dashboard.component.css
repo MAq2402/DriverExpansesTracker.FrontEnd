@@ -1,0 +1,25 @@
+/*removing arrows*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.justify-content-end {
+  justify-content: end;
+  text-align: end;
+}
+
+.nav-btn {
+  margin-left: 4px;
+  border: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: rgb(46, 109, 164);
+  background-color: white;
+}
+
+.nav-btn:hover {
+  background-color: rgb(221, 221, 221);
+}
