@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbModalModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CarDashboardComponent } from './car-dashboard/car-dashboard.component';
 import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
+import { CarNamePipe } from './pipes/car-name.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
     CarComponent,
     AlertComponent,
     CarDashboardComponent,
-    MapFuelTypePipe
+    MapFuelTypePipe,
+    CarNamePipe
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,8 @@ import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
     HttpModule,
     NgbAlertModule,
     NgxSpinnerModule,
+    NgbModalModule,
+    NgbTypeaheadModule,
     RouterModule.forRoot(
       [
         {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -62,4 +66,4 @@ import { MapFuelTypePipe } from './pipes/map-fuel-type.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

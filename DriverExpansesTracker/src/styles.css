@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* bootsrtap overrides */
+  /* MODALS */
+.modal-dialog {
+  margin: 130px auto !important;
+}
+.fade {
+  opacity: 1 !important;
+}
+.modal-backdrop.fade {
+  opacity: 0 !important;
+}
+  /* TYPEHEADS */
+.dropdown-item {
+  background-color: white;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: solid 1px grey;
+      border-top-color: grey;
+      border-top-style: solid;
+      border-top-width: 1px;
+  border-top: 0px;
+  padding: 3px;
+      padding-left: 3px;
+  padding-left: 10px;
+}
+.dropdown-item:hover{
+  background-color: #f2f2f2;
+}
+.dropdown-menu {
+  border-top: solid 1px grey;
+  padding: 0px;
+}
+/* *** */

@@ -8,16 +8,20 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Nazwa</th>
-                <th>Paliwo</th>
-                <th>Spalanie</th>
+                <th class="justify-content-center">Nazwa</th>
+                <th class="justify-content-center">Paliwo</th>
+                <th class="justify-content-center">Spalanie</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let car of getSlicedCars()">
                 <td>{{car.name}}</td>
                 <td>{{getFuelTypeNumber(car.fuelType) | mapFuelType}}</td>
-                <td style="text-align:end;">{{car.fuelConsumption100km}}l / 100km</td>
+                <td class="justify-content-end" >{{car.fuelConsumption100km}}l / 100km</td>
+                <td class="justify-content-end">
+                  <button type="button" class="btn btn-danger" title="Usuń pojazd"  (click)="deleteCar(car)">&times;</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -27,11 +31,11 @@
           <div class="form-group">
             <div class="row">
               <div class="col-sm-10">
-                <button (click)="openModalAddCar()" class="btn btn-primary">Dodaj</button>
+                <button (click)="openModalAddCar()" class="btn btn-primary" title="Dodaj pojazd">Dodaj</button>
               </div>
-              <div *ngIf="carsCount > stepIndex" class="col-sm-2 justify-content-end">
-                <button type="button" class="btn btn-secondary nav-btn" (click)="prev()" [disabled]="prevDisabled"><</button>
-                <button type="button" class="btn btn-secondary nav-btn" (click)="next()" [disabled]="nextDisabled">></button>
+              <div *ngIf="showNavButtons()" class="col-sm-2 justify-content-end">
+                <button type="button" class="btn btn-secondary nav-btn" (click)="prevCars()" [disabled]="prevButtonDisabled"><</button>
+                <button type="button" class="btn btn-secondary nav-btn" (click)="nextCars()" [disabled]="nextButtonDisabled">></button>
               </div>
             </div>
           </div>

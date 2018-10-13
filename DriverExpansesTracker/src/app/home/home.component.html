@@ -1,4 +1,5 @@
-<div class="col-sm-5">
-  <app-create-journey></app-create-journey>
-</div>
-
+<ng-container *ngIf="userLoaded()">
+  <div class="col-sm-5">
+    <app-create-journey></app-create-journey>
+  </div>
+</ng-container>

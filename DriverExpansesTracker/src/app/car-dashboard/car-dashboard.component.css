@@ -10,7 +10,11 @@ input::-webkit-inner-spin-button {
   justify-content: end;
   text-align: end;
 }
+.justify-content-center {
+  text-align: center;
+}
 
+/* navigation buttons */
 .nav-btn {
   margin-left: 4px;
   border: 1px;
@@ -19,7 +23,8 @@ input::-webkit-inner-spin-button {
   border-color: rgb(46, 109, 164);
   background-color: white;
 }
-
 .nav-btn:hover {
   background-color: rgb(221, 221, 221);
 }
+
+

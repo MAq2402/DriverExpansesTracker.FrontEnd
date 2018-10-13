@@ -38,5 +38,13 @@ export class CarService {
         );
     }
 
+    deleteCar(car: ICar) {
+      return this.http.delete<ICar>(car._links.delete.href)
+        .pipe(
+          tap(_ => this.alertService.success(`Usunięto samochod: ${car.name}`)),
+          catchError(this.errorService.handleError<any>('Operacja usuwania samochodu'))
+        );
+    }
+
 }
 

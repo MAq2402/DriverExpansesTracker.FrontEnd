@@ -4,8 +4,25 @@
       <div class="panel-heading">Stwórz podróż</div>
       <div class="panel-body">
 
-        <label for="car">Wybierz samochód</label>
-        <select id="car" class="form-control">...</select>
+        <ng-template #listBoxElement let-r="result" let-t="term">
+           {{r.name}}
+        </ng-template>
+
+        <label for="car">Wybierz samochód:</label>
+        <input id="car"
+               name="carName"
+               type="text"
+               role="select"
+               class="form-control"
+               [(ngModel)]="selectedCar"
+               [ngbTypeahead]="carTypeHeadList"
+               [inputFormatter]="carNameFormatter"
+               [resultFormatter]="carNameFormatter"
+               [resultTemplate]="listBoxElement"
+               (focus)="focus$.next($event.target.value)"
+               (click)="click$.next($event.target.value)"
+               #instance="ngbTypeahead"/>
+        <hr>
         <div id="journey">
           <div class="row">
 
@@ -27,47 +44,51 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <label for="length">Długość trasy w kilometrach</label>
+              <label for="length" title="Długość trasy w kilometrach">Odległość [km]</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="length" aria-describedby="basic-addon3">
+                <input type="number" class="form-control" id="length" aria-describedby="basic-addon3"
+                       title="Długość trasy w kilometrach">
               </div>
             </div>
             <div class="col-sm-6">
-              <label for="price">Cena za litr</label>
+              <label for="price" title="Cena za 1 litr paliwa">Cena [1l]</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="price" aria-describedby="basic-addon3">
+                <input type="number" class="form-control" id="price" aria-describedby="basic-addon3"
+                       title="Cena za 1 litr paliwa">
               </div>
             </div>
           </div>
 
-          <hr/>
+          <hr />
           <div id="passengerRoutes">
             <div class="passenger row">
               <div class="col-sm-4">
                 <label>Pasażer</label>
                 <div class="input-group">
-                  <input type="text" class="form-control"  aria-describedby="basic-addon3">
+                  <input type="text" class="form-control" aria-describedby="basic-addon3">
                 </div>
               </div>
               <div class="col-sm-4">
                 <label>Początek</label>
                 <div class="input-group">
-                  <input type="text" class="form-control"  aria-describedby="basic-addon3">
+                  <input type="text" class="form-control" aria-describedby="basic-addon3">
                 </div>
               </div>
               <div class="col-sm-4">
-                <label>Przejechana odległość</label>
+                <label title="Długość trasy przejechana przez danego pasażera w kilometrach">Odległość [km]</label>
                 <div class="input-group">
-                  <input type="number" class="form-control"  aria-describedby="basic-addon3">
+                  <input type="number" class="form-control" aria-describedby="basic-addon3"
+                         title="Długość trasy przejechana przez danego pasażera w kilometrach">
                 </div>
               </div>
             </div>
           </div>
-            <div id="newPassenger">
-              <button (click)= "addPassengerButtonOnClick()" id = "addPassengerButton" type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              </button>
-            </div>
+          <div id="newPassenger">
+            <button (click)="addPassengerButtonOnClick()" id="addPassengerButton" type="button" class="btn btn-default"
+              aria-label="Left Align" title="Dodaj kolejnego pasażera">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+          </div>
 
 
         </div>
